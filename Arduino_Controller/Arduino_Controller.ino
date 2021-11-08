@@ -42,7 +42,7 @@ void loop() {
 // Called by Arduino if any serial data has been received
 void serialEvent()
 {
-  String message = Serial.readStringUntil('\n');
+  String message = Serial.readStringUntil('\r');
   if (message == "LED ON") {
     digitalWrite(13,HIGH);
   } else if (message == "LED OFF") {
