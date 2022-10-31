@@ -4,8 +4,10 @@ Temp/
 obj/
 Logs/
 [Bb]uilds?/
+[Uu]ser[Ss]ettings/*
 
 !Assets/**/*.meta
 sysinfo.txt
 crashlytics-build.properties
 *.DotSettings.user
+global.json

@@ -9,7 +9,7 @@ public class SerialHandler : MonoBehaviour
 
     // Common default serial device on a Windows machine
     [SerializeField] private string serialPort = "COM1";
-    [SerializeField] private int baudrate = 9600;
+    [SerializeField] private int baudrate = 115200;
     
     [SerializeField] private Component river;
     private Rigidbody2D _riverRigidbody2D;
@@ -19,6 +19,8 @@ public class SerialHandler : MonoBehaviour
     void Start()
     {
         _serial = new SerialPort(serialPort,baudrate);
+        // Guarantee that the newline is common across environments.
+        _serial.NewLine = "\n";
         // Once configured, the serial communication must be opened just like a file : the OS handles the communication.
         _serial.Open();
         

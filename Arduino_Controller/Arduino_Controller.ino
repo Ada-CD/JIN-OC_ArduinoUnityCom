@@ -1,7 +1,7 @@
 // The flag signals to the rest of the program an interrupt occured
 static bool button_flag = false;
 // Remember the state the river in the Unity program is in
-static bool river_state = false;
+static bool river_state = true;
 
 // Interrupt handler, sets the flag for later processing
 void buttonPress() {
@@ -19,6 +19,11 @@ void setup() {
 
   // As the button is in pullup, detect a connection to ground
   attachInterrupt(digitalPinToInterrupt(buttonPin),buttonPress,FALLING);
+
+  // Wait for a serial connection
+  while (!Serial.availableForWrite());
+  // In case the Unity project isn't synced with the boolean.
+  Serial.println("wet");
 }
 
 // Processes button input
@@ -42,7 +47,7 @@ void loop() {
 // Called by Arduino if any serial data has been received
 void serialEvent()
 {
-  String message = Serial.readStringUntil('\r');
+  String message = Serial.readStringUntil('\n');
   if (message == "LED ON") {
     digitalWrite(13,HIGH);
   } else if (message == "LED OFF") {
