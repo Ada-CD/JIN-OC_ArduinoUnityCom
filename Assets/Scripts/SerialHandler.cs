@@ -35,14 +35,9 @@ public class SerialHandler : MonoBehaviour
         // Alternative solutions : set a timeout, read messages in another thread, coroutines, futures...
         if (_serial.BytesToRead <= 0) return;
         
-        var message = _serial.ReadLine();
-        
-        // Arduino sends "\r\n" with println, ReadLine() removes Environment.NewLine which will not be 
-        // enough on Linux/MacOS.
-        if (Environment.NewLine == "\n")
-        {
-            message = message.Trim('\r');
-        }
+        // Trim leading and trailing whitespaces, makes it easier to handle different line endings.
+        // Arduino uses \r\n by default with `.println()`.
+        var message = _serial.ReadLine().Trim();
 
         switch (message)
         {
