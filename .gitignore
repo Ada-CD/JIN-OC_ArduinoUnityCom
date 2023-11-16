@@ -11,3 +11,4 @@ sysinfo.txt
 crashlytics-build.properties
 *.DotSettings.user
 global.json
+Assembly-CSharp.csproj
