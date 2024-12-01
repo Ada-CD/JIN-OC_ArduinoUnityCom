@@ -15,6 +15,8 @@ public class SerialHandler : MonoBehaviour
     private Rigidbody2D _riverRigidbody2D;
     private SpriteRenderer _riverSprite;
     
+    [SerializeField] private LightController lightController;
+    
     // Start is called before the first frame update
     void Start()
     {
