@@ -40,8 +40,10 @@ public class SerialHandler : MonoBehaviour
         // Trim leading and trailing whitespaces, makes it easier to handle different line endings.
         // Arduino uses \r\n by default with `.println()`.
         var message = _serial.ReadLine().Trim();
-
-        switch (message)
+        
+        // Split the message on spaces, in case we want to pass a value as well.
+        var messageParts = message.Split(' ');
+        switch (messageParts[0])
         {
             case "dry":
                 _riverRigidbody2D.simulated = false;
@@ -50,6 +52,9 @@ public class SerialHandler : MonoBehaviour
             case "wet":
                 _riverRigidbody2D.simulated = true;
                 _riverSprite.color = new Color32(16,107,255,255);
+                break;
+            default:
+                Debug.Log($"Unknown message: {message}");
                 break;
         }
     }
