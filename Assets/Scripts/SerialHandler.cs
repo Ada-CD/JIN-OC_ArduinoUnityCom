@@ -49,11 +49,11 @@ public class SerialHandler : MonoBehaviour
         {
             case "dry":
                 _riverRigidbody2D.simulated = false;
-                _riverSprite.color = new Color32(146,108,77,255);
+                _riverSprite.color = RiverColors.Dry ;
                 break;
             case "wet":
                 _riverRigidbody2D.simulated = true;
-                _riverSprite.color = new Color32(16,107,255,255);
+                _riverSprite.color = RiverColors.Wet;
                 break;
             default:
                 Debug.Log($"Unknown message: {message}");
