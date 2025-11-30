@@ -1,14 +1,24 @@
 .idea/
-Library/
+[Ll]ibrary/*
 Temp/
 obj/
 Logs/
 [Bb]uilds?/
 [Uu]ser[Ss]ettings/*
 
+# Force include the scene hierarchy, so students
+# can clone and open on the correct scene directly.
+![Ll]ibrary/LastSceneManagerSetup.txt
+# Don't ignore meta files
 !Assets/**/*.meta
+
 sysinfo.txt
 crashlytics-build.properties
-*.DotSettings.user
 global.json
-Assembly-CSharp.csproj
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
